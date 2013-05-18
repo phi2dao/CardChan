@@ -1,13 +1,6 @@
 class DecksController < ApplicationController
-  def show
-    @deck = Deck.find(params[:id])
-  end
-
-  def new
-    @deck = Deck.new
-  end
-
   def index
+    @deck = Deck.new
     @decks = Deck.paginate page: params[:page]
   end
 
@@ -20,6 +13,14 @@ class DecksController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def new
+    @deck = Deck.new
+  end
+
+  def show
+    @deck = Deck.find(params[:id])
   end
 
   CARDS = [

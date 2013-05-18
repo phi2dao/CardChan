@@ -154,7 +154,7 @@ aside {
 /* forms */
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
+  border: 1px solid $grayMediumLight;
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -166,7 +166,7 @@ input {
 }
 
 #error_explanation {
-  color: #f00;
+  color: red;
   ul {
     list-style: none;
     margin: 0 0 18px 0;

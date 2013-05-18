@@ -2,12 +2,13 @@
 <h1>Decks</h1>
 
 <ul class="decks">
-  <% @decks.each do |deck| %>
-    <li>
-      <%= gravatar_for deck %>
-      <%= link_to deck.subject, deck %>
-    <li>
-  <% end %>
+  <%= render @decks %>
 </ul>
 
 <%= will_paginate %>
+
+<div class="row">
+  <div class="span4 offset4">
+    <%= render 'decks/deck_form' %>
+  </div>
+</div>
