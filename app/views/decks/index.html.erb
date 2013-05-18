@@ -1,0 +1,13 @@
+<% provide :title, 'Decks' %>
+<h1>Decks</h1>
+
+<ul class="decks">
+  <% @decks.each do |deck| %>
+    <li>
+      <%= gravatar_for deck %>
+      <%= link_to deck.subject, deck %>
+    <li>
+  <% end %>
+</ul>
+
+<%= will_paginate %>

@@ -8,5 +8,6 @@ class CreateDecks < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :decks, :updated_at
   end
 end

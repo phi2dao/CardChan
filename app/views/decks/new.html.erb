@@ -1,2 +1,15 @@
-<h1>Decks#new</h1>
-<p>Find me in app/views/decks/new.html.erb</p>
+<% provide :title, 'New Deck' %>
+<h1>New Deck</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for @deck do |f| %>
+      <%= render 'shared/error_messages' %>
+      <%= f.label :subject %>
+      <%= f.text_field :subject %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+      <%= f.submit "Create New Deck", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

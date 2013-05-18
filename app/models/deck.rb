@@ -7,4 +7,6 @@ class Deck < ActiveRecord::Base
 
   validates :subject, presence: true, length: { maximum: 50 }
   validates :email, presence: true
+
+  default_scope order: 'decks.updated_at DESC'
 end
