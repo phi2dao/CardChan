@@ -1,0 +1,11 @@
+<% provide :title, @deck.subject %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @deck %>
+        <%= @deck.subject %>
+      </h1>
+    </section>
+  </aside>
+</div>
