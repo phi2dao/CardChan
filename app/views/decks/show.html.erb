@@ -2,10 +2,22 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <h1>
-        <%= gravatar_for @deck %>
-        <%= @deck.subject %>
-      </h1>
+      <%= render 'decks/deck_info' %>
+    </section>
+    <sectopn>
+      <%= render 'decks/deck_hand' %>
+    </section>
+    <section>
+      <%= render 'decks/event_form' %>
     </section>
   </aside>
+  <div class="span8">
+    </div>
+    <% if @deck.events.any? %>
+      <ol class="events">
+        <%= render @events %>
+      </ol>
+      <%= will_paginate @events %>
+    <% end %>
+  </div>
 </div>

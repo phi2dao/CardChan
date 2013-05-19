@@ -2,6 +2,7 @@ class Deck < ActiveRecord::Base
   attr_accessible :subject, :email
   serialize :cards, Array
   serialize :hand, Array
+  has_many :events, dependent: :destroy
 
   before_save {|deck| deck.email = email.downcase }
 

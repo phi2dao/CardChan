@@ -21,6 +21,8 @@ class DecksController < ApplicationController
 
   def show
     @deck = Deck.find(params[:id])
+    @event = @deck.events.build
+    @events = @deck.events.paginate page: params[:page]
   end
 
   CARDS = [
