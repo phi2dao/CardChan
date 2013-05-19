@@ -1,0 +1,21 @@
+<% provide :title, "Event #{@event.id}" %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @event.deck %>
+        <%= link_to @event.deck.subject, @event.deck %>
+      </h1>
+    </section>
+  </aside>
+  <div class="span8">
+    <section>
+      <span class="content">
+        <%= @event.output %>
+      </span>
+      <span class="timestamp">
+        Occured <%= time_ago_in_words @event.created_at %> ago.
+      </span>
+    </section>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 CardChan::Application.routes.draw do
-  resources :decks do
-    resources :events, only: [:create, :destroy]
+  resources :decks, only: [:index, :create, :new, :show] do
+    resources :events, only: [:create, :show]
   end
 
   root to: 'decks#index'

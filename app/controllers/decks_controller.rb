@@ -9,6 +9,9 @@ class DecksController < ApplicationController
     @deck.cards = CARDS.dup.shuffle
     @deck.hand = []
     if @deck.save
+      while Deck.count > 180
+        Deck.last.destroy
+      end
       redirect_to @deck
     else
       render 'new'
@@ -20,7 +23,7 @@ class DecksController < ApplicationController
   end
 
   def show
-    @deck = Deck.find(params[:id])
+    @deck = Deck.find params[:id]
     @event = @deck.events.build
     @events = @deck.events.paginate page: params[:page]
   end

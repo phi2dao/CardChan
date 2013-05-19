@@ -5,4 +5,7 @@
   <span class="timestamp">
     Occured <%= time_ago_in_words event.created_at %> ago.
   </span>
+  <span class="pointer">
+    <%= link_to "»", [event.deck, event] %>
+  </span>
 <li>

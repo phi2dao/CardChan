@@ -66,6 +66,7 @@ class EventsController < ApplicationController
     redirect_to @deck
   end
 
-  def destroy
+  def show
+    @event = Event.find params[:id]
   end
 end
