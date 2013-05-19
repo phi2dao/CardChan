@@ -4,15 +4,14 @@
     <section>
       <%= render 'decks/deck_info' %>
     </section>
-    <sectopn>
+    <section>
       <%= render 'decks/deck_hand' %>
     </section>
     <section>
-      <%= render 'decks/event_form' %>
+      <%= render 'shared/event_form' %>
     </section>
   </aside>
   <div class="span8">
-    </div>
     <% if @deck.events.any? %>
       <ol class="events">
         <%= render @events %>

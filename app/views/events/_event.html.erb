@@ -1,22 +1,8 @@
 <li>
   <span class="content">
-    <% if event.action == 'play' %>
-      Played <%= event.card %>.
-    <% elsif event.action == 'discard' %>
-      Discarded <%= event.card %>.
-    <% elsif event.action == 'draw' %>
-      Drew <%= pluralize event.quantity, 'cards' %>.
-    <% elsif event.action == 'flip' %>
-      Flipped <%= pluralize event.quantity, 'cards' %>.
-    <% else %>
-      Shuffled the deck.
-    <% end %>
+    <%= event.output %>
   </span>
   <span class="timestamp">
-    <% if event.note.empty? %>
-      Occured <%= time_ago_in_words event.created_at %> ago.
-    <% else %>
-      <%= event.note %> | Occured <%= time_ago_in_words event.created_at %> ago.
-    <% end %>
+    Occured <%= time_ago_in_words event.created_at %> ago.
   </span>
 <li>

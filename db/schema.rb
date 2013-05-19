@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(:version => 20130518213751) do
   add_index "decks", ["updated_at"], :name => "index_decks_on_updated_at"
 
   create_table "events", :force => true do |t|
-    t.string   "card"
-    t.integer  "quantity"
+    t.string   "input"
     t.string   "action"
-    t.string   "note"
+    t.string   "email"
+    t.string   "output"
     t.integer  "deck_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

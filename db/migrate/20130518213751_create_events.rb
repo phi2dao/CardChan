@@ -1,10 +1,10 @@
 class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
-      t.string :card
-      t.integer :quantity
+      t.string :input
       t.string :action
-      t.string :note
+      t.string :email
+      t.string :output
       t.integer :deck_id
 
       t.timestamps

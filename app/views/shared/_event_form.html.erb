@@ -1,0 +1,10 @@
+<%= form_for [@deck, @event] do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.label :input %>
+  <%= f.text_field :input, placeholder: "Numbers for flip and draw, cards for play and discard" %>
+  <%= f.label :action %>
+  <%= f.select :action, [['Flip', 'flip'], ['Draw', 'draw'], ['Play', 'play'], ['Discard', 'Discard'], ['Shuffle', 'shuffle']], {}, class: "controls" %>
+  <%= f.label :email %>
+  <%= f.text_field :email, placeholder: "Same email as the deck" %>
+  <%= f.submit "Go", class: "btn btn-large btn-primary" %>
+<% end %>
