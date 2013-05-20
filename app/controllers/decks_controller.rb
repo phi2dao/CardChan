@@ -6,7 +6,7 @@ class DecksController < ApplicationController
 
   def create
     @deck = Deck.new params[:deck]
-    @deck.cards = CARDS.dup.shuffle
+    @deck.cards = get_decks[@deck.deck_type].shuffle
     @deck.hand = []
     if @deck.save
       while Deck.count > 180

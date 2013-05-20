@@ -2,6 +2,8 @@
   <%= render 'shared/error_messages', object: f.object %>
   <%= f.label :subject %>
   <%= f.text_field :subject %>
+  <%= f.label :deck_type %>
+  <%= f.select :deck_type, [['Playing Cards', 'playing'], ['Tarot Cards', 'tarot']] %>
   <%= f.label :email %>
   <%= f.text_field :email %>
   <%= f.submit "Create New Deck", class: "btn btn-large btn-primary" %>

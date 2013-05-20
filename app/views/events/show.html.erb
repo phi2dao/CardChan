@@ -4,7 +4,12 @@
     <section>
       <h1>
         <%= gravatar_for @event.deck %>
-        <%= link_to @event.deck.subject, @event.deck %>
+        <span class="content">
+          <%= link_to @event.deck.subject, @event.deck %>
+        </span>
+        <span class="timespam">
+          <%= full_deck_type @event.deck %>
+        </span>
       </h1>
     </section>
   </aside>

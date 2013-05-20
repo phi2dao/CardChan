@@ -47,11 +47,11 @@ class EventsController < ApplicationController
         end
       end
     when 'shuffle'
-      @deck.cards = CARDS.dup.shuffle - @deck.hand
+      @deck.cards = get_decks[@deck.deck_type].shuffle - @deck.hand
       @event.output = "Shuffled the deck."
     when 'shuffle_all'
       @deck.hand = []
-      @deck.cards = CARDS.dup.shuffle
+      @deck.cards = get_decks[@deck.deck_type].shuffle
       @event.output = "Shuffled all cards into the deck."
     end
     unless @event.email.downcase == @deck.email

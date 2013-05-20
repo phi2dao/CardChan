@@ -1,4 +1,9 @@
 <li>
   <%= gravatar_for deck %>
-  <%= link_to deck.subject, deck %>
+  <span class="content">
+    <%= link_to deck.subject, deck %>
+  </span>
+  <span class="timestamp">
+    <%= full_deck_type deck %>
+  </span>
 </li>

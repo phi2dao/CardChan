@@ -1,4 +1,9 @@
 <h1>
   <%= gravatar_for @deck %>
-  <%= @deck.subject %>
+  <span class="content">
+    <%= @deck.subject %>
+  </span>
+  <span class="timestamp">
+    <%= full_deck_type @deck %>
+  </span>
 </h1>

@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20130518213751) do
 
   create_table "decks", :force => true do |t|
     t.string   "subject"
+    t.string   "deck_type"
     t.string   "email"
     t.text     "cards"
     t.text     "hand"

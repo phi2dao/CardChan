@@ -2,6 +2,7 @@
   <%= render 'shared/error_messages', object: f.object %>
   <%= f.label :input %>
   <%= f.text_field :input, placeholder: "Numbers for flip/draw, cards for play/discard" %>
+  <%= f.label :action %>
   <%= f.select :action, [['Flip', 'flip'], ['Draw', 'draw'], ['Play', 'play'], ['Discard', 'discard'], ['Discard at Random', 'random'], ['Shuffle', 'shuffle'], ['Shuffle All', 'shuffle_all']] %>
   <%= f.label :email %>
   <%= f.text_field :email, placeholder: "Same email as the deck" %>
