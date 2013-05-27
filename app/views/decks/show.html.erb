@@ -4,9 +4,11 @@
     <section>
       <%= render 'decks/deck_info' %>
     </section>
-    <section>
-      <%= render 'decks/deck_hand' %>
-    </section>
+    <% if @deck.hand.any? %>
+      <section>
+        <%= render 'decks/deck_hand' %>
+      </section>
+    <% end %>
     <section>
       <%= render 'shared/event_form' %>
     </section>
