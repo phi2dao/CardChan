@@ -107,11 +107,11 @@ class EventsController < ApplicationController
   end
 
   def is_number? input
-    if input.match /\d+/
-      true
-    else
+    if input.match /\D/
       flash[:error] = "Input should be a number"
       false
+    else
+      true
     end
   end
 end

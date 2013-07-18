@@ -5,6 +5,6 @@
   <%= f.label :deck_type %>
   <%= f.select :deck_type, [['Playing Cards', 'playing'], ['Tarot Cards', 'tarot']] %>
   <%= f.label :email %>
-  <%= f.text_field :email %>
+  <%= f.text_field :email, placeholder: "An email address or password" %>
   <%= f.submit "Create New Deck", class: "btn btn-large btn-primary" %>
 <% end %>
