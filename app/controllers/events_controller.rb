@@ -51,7 +51,9 @@ class EventsController < ApplicationController
             cards << card
           end
         end
-        @deck.hand += cards if @event.action == 'draw'
+        if @event.action == 'draw'
+          @deck.hand += cards
+        end
         @event.output = "#{past_action.capitalize} #{actions.to_sentence}."
       end
     end
