@@ -37,22 +37,22 @@ class EventsController < ApplicationController
         flash[:error] = "Can't #{@deck.action} that many cards"
       else
         actions = []
+        cards = []
         input.to_i.times do
           card = @deck.cards.pop
           if card
             actions << card
+            cards << card
           else
             deck.cards = get_decks[@deck.deck_type].shuffle - @deck.hand
             actions << "shuffled the deck, and then #{past_action}"
-            actions << @deck.cards.pop
-          end
-          if @event.action == 'flip'
-            @event.output = "Flipped #{actions.to_sentence}."
-          else
-            @deck.hand += actions - ["shuffled the deck, and then #{past_action}"]
-            @event.output = "Drew #{actions.to_sentence}"
+            card = @deck.cards.pop
+            actions << card
+            cards << card
           end
         end
+        @deck.hand += cards if @event.action == 'draw'
+        @event.output = "#{past_action.capitalize} #{actions.to_sentence}."
       end
     end
   end
@@ -64,7 +64,7 @@ class EventsController < ApplicationController
       flash[:error] = "#{pluralize bad_cards.length, "invalid card"}: #{bad_cards.to_sentence}"
     else
       cards.each {|card| @deck.hand.delete card }
-      @event.output = "#{past_action} #{cards.to_sentence}".captialize
+      @event.output = "#{past_action.capitalize} #{cards.to_sentence}."
     end
   end
 
