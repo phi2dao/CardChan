@@ -36,33 +36,21 @@ class EventsController < ApplicationController
       if input.to_i > get_decks[@deck.deck_type].length - @deck.hand.length
         flash[:error] = "Can't #{@deck.action} that many cards"
       else
-        shuffled = false
-        cards1 = []
-        cards2 = []
+        actions = []
         input.to_i.times do
           card = @deck.cards.pop
-          if card and not shuffled
-            cards1 << card
-          elsif card and shuffled
-            cards2 << card
+          if card
+            actions << card
           else
-            @deck.cards = get_decks[@deck.deck_type].shuffle - @deck.hand
-            shuffled = true
+            deck.cards = get_decks[@deck.deck_type].shuffle - @deck.hand
+            actions << "shuffled the deck, and then #{past_action}"
+            actions << @deck.cards.pop
           end
-        end
-        if @event.action == 'flip'
-          if shuffled
-            @event.output = "Flipped #{cards1.to_sentence}, shuffled the deck, and then flipped #{cards2.to_sentence}."
+          if @event.action == 'flip'
+            @event.output = "Flipped #{actions.to_sentence}."
           else
-            @event.output = "Flipped #{cards1.to_sentence}."
-          end
-        else
-          @deck.hand += cards1
-          @deck.hand += cards2
-          if shuffled
-            @event.output = "Drew #{cards1.to_sentence}, shuffled the deck, and then drew #{cards2.to_sentence}."
-          else
-            @event.output = "Drew #{cards1.to_sentence}."
+            @deck.hand += actions - ["shuffled the deck, and then #{past_action}"]
+            @event.output = "Drew #{actions.to_sentence}"
           end
         end
       end
@@ -76,14 +64,10 @@ class EventsController < ApplicationController
       flash[:error] = "#{pluralize bad_cards.length, "invalid card"}: #{bad_cards.to_sentence}"
     else
       cards.each {|card| @deck.hand.delete card }
-      if @event.action == 'play'
-        @event.output = "Played #{cards.to_sentence}."
-      else
-        @event.output = "Discarded #{cards.to_sentence}."
-      end
+      @event.output = "#{past_action} #{cards.to_sentence}".captialize
     end
   end
-  
+
   def discard_at_random input
     if is_number? input
       if input.to_i > @deck.hand.length
@@ -96,7 +80,7 @@ class EventsController < ApplicationController
   end
 
   def shuffle
-    @deck.cards = get_decks[@deck.deck_type].suffle - @deck.hand
+    @deck.cards = get_decks[@deck.deck_type].shuffle - @deck.hand
     @event.output = "Shuffled the deck."
   end
 
@@ -112,6 +96,25 @@ class EventsController < ApplicationController
       false
     else
       true
+    end
+  end
+
+  def past_action
+    case @event.action
+    when 'flip'
+      'flipped'
+    when 'draw'
+      'drew'
+    when 'play'
+      'played'
+    when 'discard'
+      'discarded'
+    when 'random'
+      'discarded at random'
+    when 'shuffle'
+      'shuffled'
+    when 'shuffle_all'
+      'shuffled all'
     end
   end
 end
